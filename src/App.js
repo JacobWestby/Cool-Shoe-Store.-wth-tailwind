@@ -1,3 +1,4 @@
+import Gallery from "./components/Gallery";
 
 function App() {
   return (
@@ -12,9 +13,7 @@ function App() {
         </nav>
 
         <div className=" mb-10 shadow-lg max-w-6xl mx-auto h-5/6 lg:h-5/6">
-          <div className="w-full mx-auto h-4/6 bg-slate-400">
-            {/* img */}
-          </div>
+          <Gallery />
           <h2 className=" px-5 text-lg font-bold">a Shoe</h2>
           <p className=" px-5 text-gray-500">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab excepturi similique modi placeat esse quo illo assumenda sed ea magni.</p>
         </div>
@@ -59,12 +58,12 @@ function App() {
 
       <footer className="h-80 w-full">
         <div className="flex flex-col items-center justify-evenly h-full px-8 bg-slate-400">
-          <h3 className=" text-center text-white">Get an email when item is back in stock!</h3>
+          <h3 className=" text-center text-white">Get an email when items are back in stock!</h3>
           <form action="submit" className="text-white h-3/4 flex flex-col justify-evenly w-full max-w-md ">
-            <lable for="name">Name</lable>
+            <lable htmlFor="name">Name</lable>
             <input className="px-0.5 border-0 border-b-2 border-gray-200 focus:ring-0 focus:border-gray-500 text-gray-800" type="text" id="Name" />
 
-            <lable for="Email">Email</lable>
+            <lable htmlFor="Email">Email</lable>
             <input className="px-0.5 border-0 border-b-2 border-gray-200 focus:ring-0 focus:border-gray-500 text-gray-800" type="text" id="Email" />
 
             <button className="hover:text-gray-500" type="button">Submit</button>
