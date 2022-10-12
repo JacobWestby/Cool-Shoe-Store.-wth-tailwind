@@ -1,8 +1,9 @@
-import Gallery from "./components/Gallery";
+import Gallery from "./components/Gallery.js";
+import WhythisShoe from "./components/WhythisShoe.js";
 
 function App() {
   return (
-    <div className="">
+    <div className=" overflow-hidden">
       <header className="h-screen">
         <nav className=" flex justify-between px-10 py-5 mb-5 shadow-md lg:px-40">
           <h1 className=" text-lg font-bold">Shoe</h1>
@@ -20,10 +21,7 @@ function App() {
       </header>
       <main className="px-8 py-5 flex flex-col max-w-4xl mx-auto">
         <h3 className=" self-center mb-8 font-bold">Why this shoe</h3>
-        <p className=" mb-20 text-gray-500 border-b-2 pb-5">Lorem ipsum dolor sit, amet consectetur adipisicing elit. </p>
-        <p className=" mb-20 text-gray-500 border-b-2 pb-5 text-end">Lorem ipsum, dolor sit amet consectetur adipisicing elit. </p>
-        <p className=" mb-20 text-gray-500 border-b-2 pb-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime, </p>
-
+        <WhythisShoe />
         <section className="w-full flex flex-wrap items-center justify-center gap-20 my-20">
           <div className=" h-60 w-80 shadow-lg flex flex-col items-center ">
             <div className="h-20 w-20 bg-cyan-400">
