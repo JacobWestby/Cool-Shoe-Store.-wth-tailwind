@@ -1,57 +1,87 @@
+import { useEffect, useRef, useState } from "react";
+
 import Gallery from "./components/Gallery.js";
+import Reviews from "./components/Reviews.js";
 import WhythisShoe from "./components/WhythisShoe.js";
 
+import shoe_1 from "./images/shoe_nr_1.jpg";
+import shoe_2 from "./images/shoe_nr_2.jpg";
+import shoe_4 from "./images/shoe_nr_4.jpg";
+import { CgDarkMode } from "react-icons/cg";
+
 function App() {
+  const [reviewInfo, setReviewInfo] = useState([
+    {
+      img: shoe_4,
+      name: "Jessica Messica",
+      review: "I love this shoe, it's so comfortable and it looks great!",
+    },
+    {
+      img: shoe_4,
+      name: "Gabe Lastnamerson",
+      review: "Omg this is the best thing I've ever bought!",
+    },
+    {
+      img: shoe_2,
+      name: "Uriel Notanickname",
+      review: "My feet have never been happier!",
+    },
+    {
+      img: shoe_1,
+      name: "Urusla Lovesashoe",
+      review: "I can't belive i got my hands on a pair of these badboys!",
+    },
+    {
+      img: shoe_2,
+      name: "Gamer Playsalot",
+      review: "These are great for gaming, I can play for hours!",
+    },
+  ]);
+  const [darkMode, setDarkmode] = useState(false);
+
+  const bodyRef = useRef(null);
+  const navRef = useRef(null);
+
+
+
+  useEffect(() => {
+    const textRef = document.querySelectorAll("#darkMode")
+
+    const changeMode = () => {
+      if (darkMode) {
+        bodyRef.current.classList.add("bg-gray-900");
+        navRef.current.classList.add("bg-gray-700");
+        textRef.forEach(text => text.style.color = "white");
+      } else {
+        bodyRef.current.classList.remove("bg-gray-900");
+        navRef.current.classList.remove("bg-gray-700");
+        textRef.forEach(text => text.style.color = "black");
+      }
+    }
+
+    changeMode()
+  }, [darkMode])
+
   return (
-    <div className=" overflow-hidden">
-      <header className="h-screen">
-        <nav className=" flex justify-between px-10 py-5 mb-5 shadow-md lg:px-40">
-          <h1 className=" text-lg font-bold">Shoe</h1>
-          <ul className="flex ">
-            <li><a href="#">more</a></li>
-            <li className="ml-4">dark</li>
+    <div className="overflow-hidden" ref={bodyRef}>
+      <header className="h-screen mb-10">
+        <nav className=" flex justify-between px-10 py-5 mb-5 shadow-md lg:px-40" ref={navRef}>
+          <h1 className=" text-lg font-bold" id="darkMode">Shoe</h1>
+          <ul className="flex items-center">
+            <li onClick={() => darkMode === false ? setDarkmode(true) : setDarkmode(false)} className="ml-4" id="darkMode"><CgDarkMode className="w-[1.5rem] h-[1.5rem]" /></li>
           </ul>
         </nav>
 
         <div className=" mb-10 shadow-lg max-w-6xl mx-auto h-5/6 lg:h-5/6">
           <Gallery />
-          <h2 className=" px-5 text-lg font-bold">a Shoe</h2>
-          <p className=" px-5 text-gray-500">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab excepturi similique modi placeat esse quo illo assumenda sed ea magni.</p>
+          <h2 className=" px-5 text-lg font-bold" id="darkMode">A Shoe</h2>
+          <p className=" px-5 text-gray-500">A shoe can have so many different shapes, here are a few shoes that totally real custommers have bought from our made up compay</p>
         </div>
       </header>
-      <main className="px-8 py-5 flex flex-col max-w-4xl mx-auto">
-        <h3 className=" self-center mb-8 font-bold">Why this shoe</h3>
+      <main className="px-8 py-5 flex flex-col max-w-4xl mx-auto mt-10">
+        <h3 className=" self-center mb-8 font-bold" id="darkMode">Why this shoe</h3>
         <WhythisShoe />
-        <section className="w-full flex flex-wrap items-center justify-center gap-20 my-20">
-          <div className=" h-60 w-80 shadow-lg flex flex-col items-center ">
-            <div className="h-20 w-20 bg-cyan-400">
-              {/* img */}
-            </div>
-            <h4 className="mt-5 font-semibold">Name Nameerson</h4>
-            <p className="p-5">Really good shoe, my feet are inlove</p>
-          </div>
-          <div className=" h-60 w-80 shadow-lg flex flex-col items-center">
-            <div className="h-20 w-20 bg-cyan-400">
-              {/* img */}
-            </div>
-            <h4 className="mt-5 font-semibold">Name Nameerson</h4>
-            <p className="p-5">Really good shoe, my feet are inlove</p>
-          </div>
-          <div className=" h-60 w-80 shadow-lg flex flex-col items-center">
-            <div className="h-20 w-20 bg-cyan-400">
-              {/* img */}
-            </div>
-            <h4 className="mt-5 font-semibold">Name Nameerson</h4>
-            <p className="p-5">Really good shoe, my feet are inlove</p>
-          </div>
-          <div className=" h-60 w-80 shadow-lg flex flex-col items-center">
-            <div className="h-20 w-20 bg-cyan-400">
-              {/* img */}
-            </div>
-            <h4 className="mt-5 font-semibold">Name Nameerson</h4>
-            <p className="p-5">Really good shoe, my feet are inlove</p>
-          </div>
-        </section>
+        <Reviews reviewInfo={reviewInfo} />
       </main>
 
       <footer className="h-80 w-full">

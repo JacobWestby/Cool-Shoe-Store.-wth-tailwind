@@ -7,7 +7,7 @@ import shoe_4 from "../images/shoe_nr_4.jpg"
 import shoe_5 from "../images/shoe_nr_5.jpg"
 import shoe_6 from "../images/shoe_nr_6.jpg"
 
-function Gallery() {
+const Gallery = () => {
     const [images, setImages] = useState([
         shoe_1,
         shoe_2,
